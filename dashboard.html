@@ -4,42 +4,75 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pretty Planner | Dashboard</title>
- <link rel="stylesheet" href="pretty-planner/styles/dashboard.css" />
+  <link rel="stylesheet" href="pretty-planner/styles/dashboard.css" />
 </head>
 <body>
-  <header class="top-bar">
-    <button class="menu-btn" aria-label="Open navigation">⋯</button>
-    <h1>Dashboard</h1>
-  </header>
+  <aside class="sidebar">
+    <button aria-label="Home" class="icon-btn">🏠</button>
+    <button aria-label="Stats" class="icon-btn">⏱</button>
+    <button aria-label="Tasks" class="icon-btn">💼</button>
+    <button aria-label="Groups" class="icon-btn">👥</button>
+    <button aria-label="Logout" class="icon-btn power">⏻</button>
+  </aside>
 
-  <main class="dashboard">
-    <section class="welcome">
-      <h2>Welcome, Waliyat!</h2>
-      <p><em>Here’s an overview of your weekly tasks and events.</em></p>
-    </section>
+  <div class="main-content">
+    <header class="top-bar">
+      <button class="menu-btn" aria-label="Open navigation">⋯</button>
+      <h1>Dashboard</h1>
+      <input type="search" placeholder="Search" aria-label="Search" class="search" />
+    </header>
 
-    <section class="stats">
-      <div class="stat">
-        <h3>Total Tasks</h3>
-        <p id="completedCount">0</p>
+    <main class="dashboard">
+      <section class="welcome">
+        <h2>Welcome Waliyat!</h2>
+        <p><em>How are you doing today?</em></p>
+      </section>
+
+      <section class="stats">
+        <div class="stat black">
+          <h3>Completed Tasks</h3>
+          <p id="completedCount">0</p>
+        </div>
+        <div class="stat black">
+          <h3>Hours Logged</h3>
+          <p id="hoursLogged">0</p>
+        </div>
+        <div class="stat black">
+          <h3>Attended Events</h3>
+          <p id="attendedCount">–</p>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button id="updateBtn">Update Current Task</button>
       </div>
 
-      <div class="stat">
-        <h3>Total Hours</h3>
-        <p id="hoursLogged">0</p>
-      </div>
+      <section class="charts">
+        <div class="chart">
+          <h3>Trending Events</h3>
+          <div class="bars">
+            <div class="bar"><span style="height:30%"></span><p>Regex</p></div>
+            <div class="bar"><span style="height:60%"></span><p>Foundation</p></div>
+            <div class="bar"><span style="height:90%"></span><p>E-lab</p></div>
+            <div class="bar"><span style="height:100%"></span><p>Drama</p></div>
+            <div class="bar"><span style="height:80%"></span><p>Maths</p></div>
+          </div>
+        </div>
 
-      <div class="stat">
-        <h3>Top Tag</h3>
-        <p id="attendedCount">–</p>
-      </div>
-    </section>
-  </main>
+        <div class="chart">
+          <h3>Trending Tags</h3>
+          <div class="bars">
+            <div class="bar"><span style="height:40%"></span><p>Summative</p></div>
+            <div class="bar"><span style="height:70%"></span><p>Gossip</p></div>
+            <div class="bar"><span style="height:80%"></span><p>Party</p></div>
+            <div class="bar"><span style="height:100%"></span><p>Drama</p></div>
+            <div class="bar"><span style="height:95%"></span><p>Choir</p></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 
-  <footer>
-    <p>© 2025 Pretty Planner</p>
-  </footer>
-
-  <script type="module" src="scripts/stats.js"></script>
+  <script type="module" src="pretty-planner/scripts/stats.js"></script>
 </body>
 </html>
