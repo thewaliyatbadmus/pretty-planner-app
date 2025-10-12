@@ -1,0 +1,93 @@
+[
+  {
+    "id": "rec_001",
+    "title": "E-lab weekly assignment",
+    "dueDate": "2025-10-15",
+    "duration": 90,
+    "tag": "Assignment",
+    "createdAt": "2025-10-10T09:00:00Z",
+    "updatedAt": "2025-10-10T09:00:00Z"
+  },
+  {
+    "id": "rec_002",
+    "title": "Front End Development class",
+    "dueDate": "2025-10-12",
+    "duration": 120,
+    "tag": "Class",
+    "createdAt": "2025-10-09T11:00:00Z",
+    "updatedAt": "2025-10-09T11:00:00Z"
+  },
+  {
+    "id": "rec_003",
+    "title": "Responsible Enterprise assignment",
+    "dueDate": "2025-10-14",
+    "duration": 60,
+    "tag": "Assignment",
+    "createdAt": "2025-10-09T12:00:00Z",
+    "updatedAt": "2025-10-09T12:00:00Z"
+  },
+  {
+    "id": "rec_004",
+    "title": "Ethics Awareness presentation",
+    "dueDate": "2025-10-18",
+    "duration": 45,
+    "tag": "Task",
+    "createdAt": "2025-10-08T10:00:00Z",
+    "updatedAt": "2025-10-08T10:00:00Z"
+  },
+  {
+    "id": "rec_005",
+    "title": "Self Directed Skills Lab reflection",
+    "dueDate": "2025-10-20",
+    "duration": 30,
+    "tag": "Assignment",
+    "createdAt": "2025-10-07T13:00:00Z",
+    "updatedAt": "2025-10-07T13:00:00Z"
+  },
+  {
+    "id": "rec_006",
+    "title": "Coding Lab session",
+    "dueDate": "2025-10-16",
+    "duration": 150,
+    "tag": "Event",
+    "createdAt": "2025-10-10T09:30:00Z",
+    "updatedAt": "2025-10-10T09:30:00Z"
+  },
+  {
+    "id": "rec_007",
+    "title": "Empowerment Conference",
+    "dueDate": "2025-10-25",
+    "duration": 240,
+    "tag": "Event",
+    "createdAt": "2025-10-05T08:00:00Z",
+    "updatedAt": "2025-10-05T08:00:00Z"
+  },
+  {
+    "id": "rec_008",
+    "title": "Club Meeting",
+    "dueDate": "2025-10-13",
+    "duration": 60,
+    "tag": "Event",
+    "createdAt": "2025-10-09T10:00:00Z",
+    "updatedAt": "2025-10-09T10:00:00Z"
+  },
+  {
+    "id": "rec_009",
+    "title": "Front End Development group project",
+    "dueDate": "2025-10-22",
+    "duration": 180,
+    "tag": "Assignment",
+    "createdAt": "2025-10-06T14:00:00Z",
+    "updatedAt": "2025-10-06T14:00:00Z"
+  },
+  {
+    "id": "rec_010",
+    "title": "Responsible Enterprise team report",
+    "dueDate": "2025-10-24",
+    "duration": 90,
+    "tag": "Assignment",
+    "createdAt": "2025-10-07T15:00:00Z",
+    "updatedAt": "2025-10-07T15:00:00Z"
+  }
+]
+
