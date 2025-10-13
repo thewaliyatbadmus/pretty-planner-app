@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pretty Planner | Tasks & Events</title>
+  <link rel="stylesheet" href="pretty-planner/styles/tasks.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <button class="menu-btn" aria-label="Open navigation">⋯</button>
+    <h1>Tasks & Events</h1>
+    <input type="search" id="searchBox" placeholder="Search..." />
+  </header>
+
+  <nav class="side-menu" id="sideMenu">
+    <ul>
+      <li><a href="index.html">About</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="tasks.html">Tasks & Events</a></li>
+      <li><a href="add-task.html">Add Task</a></li>
+      <li><a href="settings.html">Settings</a></li>
+    </ul>
+  </nav>
+
+  <main class="tasks-page">
+    <section id="taskList" class="task-list"></section>
+  </main>
+
+  <script src="pretty-planner/scripts/menu.js"></script>
+  <script src="pretty-planner/scripts/tasks.js"></script>
+</body>
+</html>
+
