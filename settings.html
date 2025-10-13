@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pretty Planner | Settings</title>
+  <link rel="stylesheet" href="pretty-planner/styles/settings.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <button class="menu-btn" aria-label="Open navigation">⋯</button>
+    <h1>Settings</h1>
+  </header>
+
+  <nav class="side-menu" id="sideMenu">
+    <ul>
+      <li><a href="index.html">About</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="tasks.html">Tasks & Events</a></li>
+      <li><a href="add-task.html">Add Task</a></li>
+      <li><a href="settings.html">Settings</a></li>
+    </ul>
+  </nav>
+
+  <main class="settings-page">
+    <section>
+      <h2>Preferences</h2>
+      <form id="settingsForm">
+        <div class="form-group">
+          <label for="cap">Weekly Hour Cap</label>
+          <input type="number" id="cap" name="cap" placeholder="e.g. 40" />
+        </div>
+
+        <div class="form-group">
+          <label for="unit">Time Unit</label>
+          <select id="unit" name="unit">
+            <option value="minutes">Minutes</option>
+            <option value="hours">Hours</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="saveSettings">Save</button>
+          <button type="button" id="exportBtn">Export Data</button>
+          <button type="button" id="importBtn">Import Data</button>
+          <input type="file" id="fileInput" accept=".json" hidden />
+        </div>
+      </form>
+    </section>
+
+    <section class="status">
+      <p id="statusMsg"></p>
+    </section>
+  </main>
+
+  <script src="pretty-planner/scripts/menu.js"></script>
+  <script src="pretty-planner/scripts/settings.js"></script>
+</body>
+</html>
+
