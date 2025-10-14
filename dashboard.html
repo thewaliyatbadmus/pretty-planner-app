@@ -63,5 +63,11 @@
 
   <script type="module" src="pretty-planner/scripts/stats.js"></script>
   <script src="pretty-planner/scripts/menu.js"></script>
+  <script>
+  const savedTheme = localStorage.getItem("prettyPlannerTheme");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+</script>
 </body>
 </html>

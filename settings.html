@@ -34,7 +34,11 @@
 
         <div class="form-group">
           <label for="contrast">Accessibility and Appearance</label>
-          <input type="text" id="contrast" placeholder="choose contrast level" />
+          <select id="contrast">
+            <option value="">Select theme</option>
+            <option value="light">Light Mode</option>
+            <option value="dark">Dark Mode</option>
+          </select>
         </div>
       </div>
 
@@ -58,6 +62,7 @@
       </div>
 
       <div class="button-row">
+        <input type="file" id="importFile" accept=".json" style="display:none" />
         <button type="button" id="importBtn">Import Data</button>
         <button type="button" id="exportBtn" class="gray">Export Data</button>
         <button type="button" id="clearBtn" class="gray">Clear All Tasks</button>

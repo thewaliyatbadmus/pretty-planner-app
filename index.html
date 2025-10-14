@@ -37,6 +37,12 @@
       <p class="skip"><a href="dashboard.html">Skip to the content.</a></p>
     </section>
   </main>
+  <script>
+  const savedTheme = localStorage.getItem("prettyPlannerTheme");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+</script>
 </body>
 </html>
 

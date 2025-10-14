@@ -173,3 +173,20 @@ body {
 .side-menu a:hover {
   text-decoration: underline;
 }
+
+body.dark-mode {
+  background: #111;
+  color: #fff;
+}
+
+body.dark-mode input,
+body.dark-mode select {
+  background: #222;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+body.dark-mode button {
+  background: #fff;
+  color: #000;
+}
