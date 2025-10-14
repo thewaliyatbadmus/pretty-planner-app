@@ -1,48 +1,21 @@
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
-  background: white;
-  color: black;
-  display: flex;
-  min-height: 100vh;
-}
-
-.sidebar {
-  width: 60px;
-  border-right: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 0;
-  background: white;
-}
-
-.icon-btn {
-  background: none;
-  border: none;
-  font-size: 1.4rem;
-  margin: 1rem 0;
-  cursor: pointer;
-}
-
-.power {
-  font-size: 1.5rem;
-}
-
-.main-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  background: #fff;
+  color: #000;
 }
 
 .top-bar {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid black;
-  padding: 1rem;
-  background: white;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #000;
+}
+
+.top-bar h1 {
+  font-size: 1.5rem;
+  margin: 0;
 }
 
 .menu-btn {
@@ -53,179 +26,121 @@ body {
 }
 
 .search {
-  border: 1px solid black;
   padding: 0.4rem 0.6rem;
-  border-radius: 3px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  width: 180px;
 }
 
 .dashboard {
-  padding: 2rem;
-}
-
-.welcome {
-  text-align: left;
-  margin-bottom: 2rem;
+  text-align: center;
+  padding: 2rem 1rem;
 }
 
 .welcome h2 {
-  font-size: 1.8rem;
-  margin: 0 0 0.3rem;
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
 }
 
 .welcome p {
   font-style: italic;
-  color: #333;
-  margin: 0;
+  color: #444;
+  margin-bottom: 2rem;
 }
 
 .stats {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .stat {
-  width: 200px;
-  height: 110px;
+  background: #000;
+  color: #fff;
+  padding: 1rem 2rem;
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 160px;
   text-align: center;
 }
 
-.stat.black {
-  background: black;
-  color: white;
-}
-
 .stat h3 {
-  font-size: 1rem;
+  margin: 0 0 0.5rem;
   font-weight: 500;
-  margin-bottom: 0.5rem;
 }
 
 .stat p {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
 }
 
 .actions {
-  text-align: right;
   margin-bottom: 2rem;
 }
 
-#updateBtn {
-  background: black;
-  color: white;
+.actions button {
+  background: #000;
+  color: #fff;
   border: none;
   padding: 0.7rem 1.5rem;
-  border-radius: 4px;
+  font-weight: 600;
   cursor: pointer;
 }
 
-#updateBtn:hover {
+.actions button:hover {
   background: #333;
 }
 
 .charts {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-  margin-top: 2rem;
+  gap: 3rem;
+  padding: 2rem;
 }
 
 .chart {
-  width: 45%;
+  width: 350px;
   text-align: center;
 }
 
 .chart h3 {
-  font-size: 1.1rem;
   margin-bottom: 1rem;
 }
 
-.bars {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  height: 150px;
-  border-bottom: 1px solid black;
-}
-
-.bar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.bar span {
-  width: 20px;
-  background: black;
-  border-radius: 2px;
-  display: block;
-  transition: height 0.3s ease;
-}
-
-.bar p {
-  margin-top: 0.3rem;
-  font-size: 0.8rem;
-}
-
-@media (max-width: 768px) {
-  .charts {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .chart {
-    width: 90%;
-  }
-
-  .stats {
-    justify-content: center;
-  }
-
-  .welcome h2 {
-    font-size: 1.4rem;
-  }
-}
+/* side-menu (from menu.js toggle) */
 .side-menu {
   position: fixed;
   top: 0;
-  left: -230px;
-  width: 200px;
-  height: 100%;
-  background: white;
-  border-right: 1px solid black;
-  transition: left 0.3s ease;
-  z-index: 20;
-  padding-top: 4rem;
+  right: -260px;
+  width: 240px;
+  height: 100vh;
+  background: #fff;
+  border-left: 1px solid #000;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  padding-top: 60px;
 }
 
 .side-menu.open {
-  left: 0;
+  right: 0;
 }
 
 .side-menu ul {
   list-style: none;
-  margin: 0;
   padding: 0;
 }
 
 .side-menu li {
-  border-bottom: 1px solid black;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
 }
 
 .side-menu a {
-  display: block;
-  padding: 1rem;
   text-decoration: none;
-  color: black;
-  font-size: 1rem;
+  color: #000;
+  font-weight: 500;
 }
 
 .side-menu a:hover {

@@ -7,69 +7,59 @@
   <link rel="stylesheet" href="pretty-planner/styles/dashboard.css" />
 </head>
 <body>
-  <aside class="sidebar">
-    <button aria-label="Home" class="icon-btn">Home</button>
-    <button aria-label="Stats" class="icon-btn">Stats</button>
-    <button aria-label="Tasks" class="icon-btn">Tasks</button>
-    <button aria-label="Groups" class="icon-btn">Groups</button>
-    <button aria-label="Logout" class="icon-btn power">Logout</button>
-  </aside>
+  <header class="top-bar">
+    <button class="menu-btn" aria-label="Open navigation">⋯</button>
+    <h1>Dashboard</h1>
+    <input type="search" id="dashboardSearch" placeholder="Search tasks..." aria-label="Search" class="search" />
+  </header>
 
-  <div class="main-content">
-    <header class="top-bar">
-      <button class="menu-btn" aria-label="Open navigation">⋯</button>
-      <h1>Dashboard</h1>
-      <input type="search" id="dashboardSearch" placeholder="Search tasks..." aria-label="Search" class="search" />
-    </header>
+  <nav class="side-menu" id="sideMenu">
+    <ul>
+      <li><a href="index.html">About</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="tasks.html">Tasks & Events</a></li>
+      <li><a href="add-task.html">Add New Task</a></li>
+      <li><a href="settings.html">Settings</a></li>
+    </ul>
+  </nav>
 
-    <nav class="side-menu" id="sideMenu">
-      <ul>
-        <li><a href="index.html">About</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="tasks.html">Tasks & Events</a></li>
-        <li><a href="add-task.html">Add New Task</a></li>
-        <li><a href="settings.html">Settings</a></li>
-      </ul>
-    </nav>
+  <main class="dashboard">
+    <section class="welcome">
+      <h2>Welcome Waliyat!</h2>
+      <p><em>How are you doing today?</em></p>
+    </section>
 
-    <main class="dashboard">
-      <section class="welcome">
-        <h2>Welcome Waliyat!</h2>
-        <p><em>How are you doing today?</em></p>
-      </section>
+    <section class="stats">
+      <div class="stat black">
+        <h3>Completed Tasks</h3>
+        <p id="completedCount">0</p>
+      </div>
+      <div class="stat black">
+        <h3>Hours Logged</h3>
+        <p id="hoursLogged">0</p>
+      </div>
+      <div class="stat black">
+        <h3>Top Tag</h3>
+        <p id="attendedCount">–</p>
+      </div>
+    </section>
 
-      <section class="stats">
-        <div class="stat black">
-          <h3>Completed Tasks</h3>
-          <p id="completedCount">0</p>
-        </div>
-        <div class="stat black">
-          <h3>Hours Logged</h3>
-          <p id="hoursLogged">0</p>
-        </div>
-        <div class="stat black">
-          <h3>Top Tag</h3>
-          <p id="attendedCount">–</p>
-        </div>
-      </section>
+    <div class="actions">
+      <button id="updateBtn">Update Current Task</button>
+    </div>
 
-      <div class="actions">
-        <button id="updateBtn">Update Current Task</button>
+    <section class="charts">
+      <div class="chart">
+        <h3>Trending Events</h3>
+        <canvas id="eventsChart" width="350" height="200"></canvas>
       </div>
 
-      <section class="charts">
-        <div class="chart">
-          <h3>Trending Events</h3>
-          <canvas id="eventsChart" width="350" height="200"></canvas>
-        </div>
-
-        <div class="chart">
-          <h3>Trending Tags</h3>
-          <canvas id="tagsChart" width="350" height="200"></canvas>
-        </div>
-      </section>
-    </main>
-  </div>
+      <div class="chart">
+        <h3>Trending Tags</h3>
+        <canvas id="tagsChart" width="350" height="200"></canvas>
+      </div>
+    </section>
+  </main>
 
   <script type="module" src="pretty-planner/scripts/stats.js"></script>
   <script src="pretty-planner/scripts/menu.js"></script>
