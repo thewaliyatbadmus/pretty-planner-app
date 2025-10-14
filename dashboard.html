@@ -8,18 +8,18 @@
 </head>
 <body>
   <aside class="sidebar">
-    <button aria-label="Home" class="icon-btn">🏠</button>
-    <button aria-label="Stats" class="icon-btn">⏱</button>
-    <button aria-label="Tasks" class="icon-btn">💼</button>
-    <button aria-label="Groups" class="icon-btn">👥</button>
-    <button aria-label="Logout" class="icon-btn power">⏻</button>
+    <button aria-label="Home" class="icon-btn">Home</button>
+    <button aria-label="Stats" class="icon-btn">Stats</button>
+    <button aria-label="Tasks" class="icon-btn">Tasks</button>
+    <button aria-label="Groups" class="icon-btn">Groups</button>
+    <button aria-label="Logout" class="icon-btn power">Logout</button>
   </aside>
 
   <div class="main-content">
     <header class="top-bar">
       <button class="menu-btn" aria-label="Open navigation">⋯</button>
       <h1>Dashboard</h1>
-      <input type="search" placeholder="Search" aria-label="Search" class="search" />
+      <input type="search" id="dashboardSearch" placeholder="Search tasks..." aria-label="Search" class="search" />
     </header>
 
     <nav class="side-menu" id="sideMenu">
@@ -48,7 +48,7 @@
           <p id="hoursLogged">0</p>
         </div>
         <div class="stat black">
-          <h3>Attended Events</h3>
+          <h3>Top Tag</h3>
           <p id="attendedCount">–</p>
         </div>
       </section>
@@ -60,24 +60,12 @@
       <section class="charts">
         <div class="chart">
           <h3>Trending Events</h3>
-          <div class="bars">
-            <div class="bar"><span style="height:30%"></span><p>Regex</p></div>
-            <div class="bar"><span style="height:60%"></span><p>Foundation</p></div>
-            <div class="bar"><span style="height:90%"></span><p>E-lab</p></div>
-            <div class="bar"><span style="height:100%"></span><p>Drama</p></div>
-            <div class="bar"><span style="height:80%"></span><p>Maths</p></div>
-          </div>
+          <canvas id="eventsChart" width="350" height="200"></canvas>
         </div>
 
         <div class="chart">
           <h3>Trending Tags</h3>
-          <div class="bars">
-            <div class="bar"><span style="height:40%"></span><p>Summative</p></div>
-            <div class="bar"><span style="height:70%"></span><p>Gossip</p></div>
-            <div class="bar"><span style="height:80%"></span><p>Party</p></div>
-            <div class="bar"><span style="height:100%"></span><p>Drama</p></div>
-            <div class="bar"><span style="height:95%"></span><p>Choir</p></div>
-          </div>
+          <canvas id="tagsChart" width="350" height="200"></canvas>
         </div>
       </section>
     </main>
