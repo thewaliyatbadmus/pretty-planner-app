@@ -8,9 +8,10 @@
 </head>
 <body>
   <header class="top-bar">
-    <button class="menu-btn" aria-label="Open navigation">⋯</button>
-    <h1>Settings</h1>
-  </header>
+  <button class="menu-btn" aria-label="Open navigation">⋯</button>
+  <h1>Settings</h1>
+</header>
+
 
   <nav class="side-menu" id="sideMenu">
     <ul>
@@ -73,5 +74,14 @@
 
   <script src="pretty-planner/scripts/menu.js"></script>
   <script src="pretty-planner/scripts/settings.js"></script>
+  <script src="pretty-planner/scripts/menu.js"></script>
+<script src="pretty-planner/scripts/settings.js"></script>
+<script>
+  const savedTheme = localStorage.getItem("prettyPlannerTheme");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+</script>
+
 </body>
 </html>
