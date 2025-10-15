@@ -4,6 +4,7 @@ const categories = document.querySelectorAll(".categories li");
 const taskContainer = document.getElementById("taskContainer");
 const taskTitle = document.getElementById("taskTitle");
 const addTaskBtn = document.getElementById("addTaskBtn");
+const searchBox = document.getElementById("taskSearch");
 
 addTaskBtn.addEventListener("click", () => {
   window.location.href = "add-task.html";
@@ -71,12 +72,6 @@ function filterByCategory(cat) {
       return tasks.filter((t) => t.tag.toLowerCase() === "event");
     case "Assignments":
       return tasks.filter((t) => t.tag.toLowerCase() === "assignment");
-    case "Completed":
-      return tasks.filter((t) => t.completed);
-    case "Trash":
-      return []; // placeholder
-    case "Summary":
-      return tasks;
     default:
       return tasks;
   }
@@ -95,6 +90,16 @@ async function init() {
       const filtered = filterByCategory(selected);
       renderTasks(filtered, selected);
     });
+  });
+
+  searchBox.addEventListener("input", () => {
+    const query = searchBox.value.toLowerCase().trim();
+    const filtered = tasks.filter(
+      (t) =>
+        t.title.toLowerCase().includes(query) ||
+        t.tag.toLowerCase().includes(query)
+    );
+    renderTasks(filtered, query === "" ? "All Tasks" : `Results for "${query}"`);
   });
 }
 
