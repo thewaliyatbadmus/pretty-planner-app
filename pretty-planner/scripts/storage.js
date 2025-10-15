@@ -8,7 +8,7 @@ export async function loadData() {
       
       let response = await fetch("seed.json");
       if (!response.ok) {
-    
+  
         response = await fetch("../seed.json");
       }
 
