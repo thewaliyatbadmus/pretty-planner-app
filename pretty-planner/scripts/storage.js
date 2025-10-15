@@ -5,7 +5,13 @@ export async function loadData() {
 
   if (!data || data.length === 0) {
     try {
-      const response = await fetch("../seed.json");
+      
+      let response = await fetch("seed.json");
+      if (!response.ok) {
+    
+        response = await fetch("../seed.json");
+      }
+
       data = await response.json();
       localStorage.setItem(KEY, JSON.stringify(data));
     } catch (err) {
@@ -20,4 +26,5 @@ export async function loadData() {
 export function saveData(data) {
   localStorage.setItem(KEY, JSON.stringify(data));
 }
+
 
