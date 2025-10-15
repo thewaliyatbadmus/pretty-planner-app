@@ -147,3 +147,63 @@ body.dark-mode button {
   background: #fff;
   color: #000;
 }
+
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+img, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+header, main, section, footer, div {
+  width: 100%;
+  display: block;
+}
+
+form, input, select, textarea, button {
+  width: 100%;
+  max-width: 100%;
+}
+
+.container, .dashboard, .settings-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.top-bar, .actions, .charts, .stats, .form-row, .button-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stat, .chart, .form-group, .task-card {
+  flex: 1 1 300px;
+  max-width: 100%;
+}
+
+button {
+  width: auto;
+  min-width: 120px;
+}
+
+input, select, textarea {
+  font-size: 1rem;
+  padding: 0.6rem;
+}
+
+h1, h2, h3, h4, p, label {
+  word-wrap: break-word;
+}
