@@ -1,4 +1,4 @@
-import { loadData } from "./storage.js";
+import { loadData } from "./pretty-planner/scripts/storage.js";
 
 const categories = document.querySelectorAll(".categories li");
 const taskContainer = document.getElementById("taskContainer");
