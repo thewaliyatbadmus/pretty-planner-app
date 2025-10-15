@@ -1,18 +1,23 @@
-const KEY = "prettyPlanner:data";
+const KEY = "prettyPlannerData";
 
-export function loadData() {
-  const saved = localStorage.getItem(KEY);
-  if (saved) return JSON.parse(saved);
-  return [];
+export async function loadData() {
+  let data = JSON.parse(localStorage.getItem(KEY));
+
+  if (!data || data.length === 0) {
+    try {
+      const response = await fetch("seed.json");
+      data = await response.json();
+      localStorage.setItem(KEY, JSON.stringify(data));
+    } catch (err) {
+      console.error("Error loading seed data:", err);
+      data = [];
+    }
+  }
+
+  return data;
 }
 
 export function saveData(data) {
   localStorage.setItem(KEY, JSON.stringify(data));
 }
 
-export async function loadSeed() {
-  const res = await fetch("seed.json");
-  const data = await res.json();
-  saveData(data);
-  return data;
-}
