@@ -2,11 +2,11 @@
 Author: Waliyat Badmus
  Theme: Campus Life Planner
  Goal: To help students efficiently manage their academic and social activities through an accessible, responsive planner that tracks classes, assignments, and events.
-Live Demo - 
+Live Site - https://thewaliyatbadmus.github.io/pretty-planner-app  
 YouTube Demo - https://youtu.be/bqxPCly4KHw
-
 Wireframe - https://www.canva.com/design/DAG1cFxBQB0/d0mQSH8Cr96sPzEDYmC06w/edit?utm_content=DAG1cFxBQB0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
-Project Overview
+
+# Project Overview
 Pretty Planner is a responsive and accessible web app built using vanilla HTML, CSS, and JavaScript.
  It allows students to organize their tasks, assignments, and events while tracking their time and completion progress.
 The app includes data persistence via localStorage, regex-based input validation, live search, JSON import/export, and mobile-first responsiveness.
