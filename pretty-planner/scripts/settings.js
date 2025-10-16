@@ -1,81 +1,75 @@
-const importBtn = document.getElementById("importBtn");
-const exportBtn = document.getElementById("exportBtn");
-const clearBtn = document.getElementById("clearBtn");
-const resetBtn = document.getElementById("resetBtn");
-const fileInput = document.getElementById("importFile");
-const contrastSelect = document.getElementById("contrast");
-const body = document.body;
+const clearTasksBtn = document.getElementById('clearTasks');
+const clearSettingsBtn = document.getElementById('clearSettings');
+const importBtn = document.getElementById('importBtn');
+const exportBtn = document.getElementById('exportBtn');
+const form = document.getElementById('settingsForm');
+const menuBtn = document.querySelector('.menu-btn');
+const menu = document.querySelector('.menu');
 
-// Import Data (JSON → localStorage)
-importBtn.addEventListener("click", () => fileInput.click());
-
-fileInput.addEventListener("change", (event) => {
-  const file = event.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    try {
-      const data = JSON.parse(e.target.result);
-      localStorage.setItem("prettyPlannerData", JSON.stringify(data));
-      alert("Data imported successfully!");
-    } catch {
-      alert("Invalid JSON file. Please upload a valid data file.");
-    }
-  };
-  reader.readAsText(file);
+menuBtn.addEventListener('click', () => {
+  menu.classList.toggle('show');
 });
 
-// Export Data (localStorage → JSON)
-exportBtn.addEventListener("click", () => {
-  const data = localStorage.getItem("prettyPlannerData");
-  if (!data) {
-    alert("No data found to export!");
-    return;
-  }
-  const blob = new Blob([data], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "pretty_planner_data.json";
-  a.click();
-  URL.revokeObjectURL(url);
+document.querySelectorAll('.menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    menu.classList.remove('show');
+  });
 });
 
-// Clear All Tasks
-clearBtn.addEventListener("click", () => {
-  const confirmClear = confirm("Are you sure you want to clear all tasks?");
-  if (confirmClear) {
-    localStorage.removeItem("prettyPlannerData");
-    alert("All tasks have been cleared.");
-  }
-});
-
-// Clear Settings (resets form)
-resetBtn.addEventListener("click", () => {
-  const confirmReset = confirm("Clear all settings?");
-  if (confirmReset) {
-    document.getElementById("settingsForm").reset();
-    localStorage.removeItem("prettyPlannerTheme");
-    alert("Settings cleared.");
-  }
-});
-
-// Accessibility Theme Toggle
-contrastSelect.addEventListener("change", () => {
-  const theme = contrastSelect.value;
-  if (theme === "dark") {
-    body.classList.add("dark-mode");
-    localStorage.setItem("prettyPlannerTheme", "dark");
-  } else {
-    body.classList.remove("dark-mode");
-    localStorage.setItem("prettyPlannerTheme", "light");
-  }
-});
-
-// Load saved theme on page load
-const savedTheme = localStorage.getItem("prettyPlannerTheme");
-if (savedTheme === "dark") {
-  body.classList.add("dark-mode");
-  contrastSelect.value = "dark";
+function showPopup(message, type) {
+  const popup = document.createElement('div');
+  popup.className = `popup ${type}`;
+  popup.textContent = message;
+  document.body.appendChild(popup);
+  setTimeout(() => popup.remove(), 2500);
 }
 
+clearTasksBtn.addEventListener('click', () => {
+  localStorage.removeItem('tasks');
+  showPopup('All tasks cleared successfully.', 'success');
+});
+
+clearSettingsBtn.addEventListener('click', () => {
+  form.reset();
+  showPopup('Settings have been reset.', 'info');
+});
+
+importBtn.addEventListener('click', () => {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+  input.onchange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      try {
+        const data = JSON.parse(event.target.result);
+        if (Array.isArray(data)) {
+          localStorage.setItem('tasks', JSON.stringify(data));
+          showPopup('Data imported successfully.', 'success');
+        } else {
+          showPopup('Invalid file format.', 'error');
+        }
+      } catch {
+        showPopup('Error reading file.', 'error');
+      }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+});
+
+exportBtn.addEventListener('click', () => {
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  if (tasks.length === 0) {
+    showPopup('No data to export.', 'error');
+    return;
+  }
+  const blob = new Blob([JSON.stringify(tasks, null, 2)], { type: 'application/json' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'tasks_export.json';
+  link.click();
+  showPopup('Data exported successfully.', 'success');
+});

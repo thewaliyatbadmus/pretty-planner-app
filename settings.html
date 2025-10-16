@@ -1,87 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pretty Planner | Settings</title>
-  <link rel="stylesheet" href="pretty-planner/styles/settings.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings | Pretty Planner</title>
+  <link rel="stylesheet" href="pretty-planner/styles/settings.css">
 </head>
 <body>
   <header class="top-bar">
-  <button class="menu-btn" aria-label="Open navigation">⋯</button>
-  <h1>Settings</h1>
-</header>
-
-
-  <nav class="side-menu" id="sideMenu">
-    <ul>
-      <li><a href="index.html">About</a></li>
-      <li><a href="dashboard.html">Dashboard</a></li>
-      <li><a href="tasks.html">Tasks & Events</a></li>
-      <li><a href="add-task.html">Add New Task</a></li>
-      <li><a href="settings.html">Settings</a></li>
-    </ul>
-  </nav>
+    <button class="menu-btn" aria-label="Open navigation">⋯</button>
+    <h1>Settings</h1>
+    <div class="menu">
+      <nav>
+        <ul>
+          <li><a href="index.html">About</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="tasks.html">Tasks & Events</a></li>
+          <li><a href="add-task.html">Add Task</a></li>
+          <li><a href="settings.html">Settings</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
   <main class="settings-container">
     <h2>Manage Preference and Data</h2>
 
-    <form id="settingsForm">
+    <form id="settingsForm" class="settings-form">
       <div class="form-row">
         <div class="form-group">
-          <label for="unit">Choose Duration Unit</label>
-          <input type="text" id="unit" placeholder="minutes / hours" />
+          <label for="durationUnit">Choose Duration Unit</label>
+          <input type="text" id="durationUnit" placeholder="minutes / hours">
         </div>
-
         <div class="form-group">
-          <label for="contrast">Accessibility and Appearance</label>
-          <select id="contrast">
-            <option value="">Select theme</option>
-            <option value="light">Light Mode</option>
-            <option value="dark">Dark Mode</option>
-          </select>
+          <label for="duration">Duration</label>
+          <input type="text" id="duration" placeholder="00:00–00:00">
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
           <label for="date">Date</label>
-          <input type="text" id="date" placeholder="dd/mm/yyyy" />
+          <input type="text" id="date" placeholder="dd/mm/yyyy">
         </div>
-
         <div class="form-group">
-          <label for="duration">Duration</label>
-          <input type="text" id="duration" placeholder="00:00–00:00" />
+          <label for="category">Hashtag / Category</label>
+          <input type="text" id="category" placeholder="#pickatag">
         </div>
       </div>
 
-      <div class="form-row single">
-        <div class="form-group full">
-          <label for="tag">Hashtag / Category</label>
-          <input type="text" id="tag" placeholder="#PickATag" />
-        </div>
+      <div class="buttons">
+        <button type="button" id="clearTasks" class="gray-btn">Clear All Tasks</button>
+        <button type="button" id="clearSettings" class="gray-btn">Clear Settings</button>
       </div>
 
-      <div class="button-row">
-        <input type="file" id="importFile" accept=".json" style="display:none" />
-        <button type="button" id="importBtn">Import Data</button>
-        <button type="button" id="exportBtn" class="gray">Export Data</button>
-        <button type="button" id="clearBtn" class="gray">Clear All Tasks</button>
-        <button type="button" id="resetBtn" class="red">Clear Settings</button>
+      <div class="buttons">
+        <button type="button" id="importBtn" class="black-btn">Import Data</button>
+        <button type="button" id="exportBtn" class="black-btn">Export Data</button>
       </div>
     </form>
   </main>
 
-  <script src="pretty-planner/scripts/menu.js"></script>
   <script src="pretty-planner/scripts/settings.js"></script>
-  <script src="pretty-planner/scripts/menu.js"></script>
-<script src="pretty-planner/scripts/settings.js"></script>
-<script>
-  const savedTheme = localStorage.getItem("prettyPlannerTheme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-  }
-</script>
-
 </body>
 </html>
