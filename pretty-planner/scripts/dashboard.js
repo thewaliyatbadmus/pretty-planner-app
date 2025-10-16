@@ -20,7 +20,7 @@ async function loadTasks() {
   return merged;
 }
 
-// Calculate and display dashboard stats
+
 function calculateStats(tasks) {
   const totalTasks = tasks.length;
   const totalHours = tasks.reduce((sum, t) => sum + (t.duration / 60), 0);
@@ -34,7 +34,7 @@ function calculateStats(tasks) {
   console.log(`Stats updated: ${totalTasks} tasks, ${totalHours} hrs, ${events} events`);
 }
 
-// Find top tag
+
 function findTopTag(tasks) {
   const tagCount = {};
   tasks.forEach(task => {
@@ -46,7 +46,7 @@ function findTopTag(tasks) {
   return sortedTags.length ? sortedTags[0][0] : null;
 }
 
-// Initialize dashboard
+
 loadTasks().then(tasks => {
   calculateStats(tasks);
 
