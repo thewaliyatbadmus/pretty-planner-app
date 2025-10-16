@@ -1,105 +1,40 @@
-import { loadData } from "./storage.js";
+const menuBtn = document.querySelector('.menu-btn');
+const menu = document.querySelector('.menu');
+const searchInput = document.getElementById('taskSearch');
 
-const categories = document.querySelectorAll(".categories li");
-const taskContainer = document.getElementById("taskContainer");
-const taskTitle = document.getElementById("taskTitle");
-const addTaskBtn = document.getElementById("addTaskBtn");
-const searchBox = document.getElementById("taskSearch");
-
-addTaskBtn.addEventListener("click", () => {
-  window.location.href = "add-task.html";
+menuBtn.addEventListener('click', () => {
+  menu.classList.toggle('hidden');
 });
 
-let tasks = [];
+fetch('seed.json')
+  .then(res => res.json())
+  .then(data => {
+    const classes = document.querySelector('#classes .task-list');
+    const events = document.querySelector('#events .task-list');
+    const assignments = document.querySelector('#assignments .task-list');
 
-function renderTasks(filteredTasks, title) {
-  taskTitle.textContent = title;
-  taskContainer.innerHTML = "";
+    data.forEach(task => {
+      const card = document.createElement('div');
+      card.classList.add('task-card');
+      card.innerHTML = `
+        <h4>${task.title}</h4>
+        <p>${task.dueDate}</p>
+        <p>${task.duration} minutes</p>
+        <p>#${task.tag.toLowerCase()}</p>
+      `;
 
-  if (filteredTasks.length === 0) {
-    taskContainer.innerHTML = `<p style="text-align:center; color:#777;">No tasks found.</p>`;
-    return;
-  }
-
-  const grid = document.createElement("div");
-  grid.classList.add("task-grid");
-
-  filteredTasks.forEach((task) => {
-    const card = document.createElement("div");
-    card.classList.add("task-card");
-    card.innerHTML = `
-      <h4>${task.title}</h4>
-      <p>${task.tag} — Due: ${task.dueDate}</p>
-    `;
-    grid.appendChild(card);
-  });
-
-  taskContainer.appendChild(grid);
-}
-
-function getTodayDate() {
-  const today = new Date();
-  return today.toISOString().split("T")[0];
-}
-
-function getTomorrowDate() {
-  const t = new Date();
-  t.setDate(t.getDate() + 1);
-  return t.toISOString().split("T")[0];
-}
-
-function filterByCategory(cat) {
-  const today = getTodayDate();
-  const tomorrow = getTomorrowDate();
-
-  switch (cat) {
-    case "All Tasks":
-      return tasks;
-    case "Today":
-      return tasks.filter((t) => t.dueDate === today);
-    case "Tomorrow":
-      return tasks.filter((t) => t.dueDate === tomorrow);
-    case "This Week":
-      return tasks.filter((t) => {
-        const now = new Date();
-        const due = new Date(t.dueDate);
-        const diff = (due - now) / (1000 * 60 * 60 * 24);
-        return diff >= 0 && diff <= 7;
-      });
-    case "Classes":
-      return tasks.filter((t) => t.tag.toLowerCase() === "class");
-    case "Events":
-      return tasks.filter((t) => t.tag.toLowerCase() === "event");
-    case "Assignments":
-      return tasks.filter((t) => t.tag.toLowerCase() === "assignment");
-    default:
-      return tasks;
-  }
-}
-
-async function init() {
-  tasks = await loadData();
-  renderTasks(tasks, "All Tasks");
-
-  categories.forEach((li) => {
-    li.addEventListener("click", () => {
-      categories.forEach((c) => c.classList.remove("active"));
-      li.classList.add("active");
-      const selected = li.textContent.trim();
-      const filtered = filterByCategory(selected);
-      renderTasks(filtered, selected);
+      if (task.tag === 'Class') classes.appendChild(card);
+      else if (task.tag === 'Event') events.appendChild(card);
+      else if (task.tag === 'Assignment') assignments.appendChild(card);
     });
-  });
 
-  searchBox.addEventListener("input", () => {
-    const query = searchBox.value.toLowerCase().trim();
-    const filtered = tasks.filter(
-      (t) =>
-        t.title.toLowerCase().includes(query) ||
-        t.tag.toLowerCase().includes(query)
-    );
-    renderTasks(filtered, query === "" ? "All Tasks" : `Results for "${query}"`);
-  });
-}
-
-init();
+    searchInput.addEventListener('input', e => {
+      const searchValue = e.target.value.toLowerCase();
+      document.querySelectorAll('.task-card').forEach(card => {
+        card.style.display = card.textContent.toLowerCase().includes(searchValue)
+          ? 'block'
+          : 'none';
+      });
+    });
+  })
+  .catch(err => console.error('Error loading tasks:', err));

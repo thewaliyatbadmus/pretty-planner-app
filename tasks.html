@@ -1,116 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pretty Planner | Tasks & Events</title>
-  <link rel="stylesheet" href="pretty-planner/styles/tasks.css" />
+  <link rel="stylesheet" href="pretty-planner/styles/tasks.css">
 </head>
 <body>
   <header class="top-bar">
     <button class="menu-btn" aria-label="Open navigation">⋯</button>
     <h1>Tasks & Events</h1>
-    <input type="search" id="taskSearch" placeholder="Search tasks..." aria-label="Search" class="search" />
   </header>
 
-  <nav class="side-menu" id="sideMenu">
-    <ul>
-      <li><a href="index.html">About</a></li>
-      <li><a href="dashboard.html">Dashboard</a></li>
-      <li><a href="tasks.html">Tasks & Events</a></li>
-      <li><a href="add-task.html">Add New Task</a></li>
-      <li><a href="settings.html">Settings</a></li>
-    </ul>
-  </nav>
+  <div class="menu hidden">
+    <nav>
+      <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="tasks.html">Tasks & Events</a></li>
+        <li><a href="add-task.html">Add Task</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="search-container">
+    <input type="search" id="taskSearch" placeholder="Search" aria-label="Search tasks">
+  </div>
 
   <main class="tasks-container">
-    <aside class="categories">
-      <h2>All Activities</h2>
-      <ul>
-        <li class="active">All Tasks</li>
-        <li>Today</li>
-        <li>Tomorrow</li>
-        <li>This Week</li>
-      </ul>
-      <h3>Lists</h3>
-      <ul>
-        <li>Classes</li>
-        <li>Events</li>
-        <li>Assignments</li>
-        <li>Saved Tags</li>
-      </ul>
-      <ul>
-        <li>Completed</li>
-        <li>Trash</li>
-        <li>Summary</li>
-      </ul>
-    </aside>
+    <h2>Manage your Tasks</h2>
 
-    <section class="main-tasks">
-      <div class="tasks-header">
-        <div>
-          <h2>All Tasks</h2>
-          <p>Manage your activities</p>
-        </div>
-        <button id="addTaskBtn">Add New Entry</button>
-      </div>
-
-      <div class="task-section">
-        <h3>Classes</h3>
-        <div class="task-grid">
-          <div class="task-card">
-            <h4>Front End Development</h4>
-            <p>2pm, Every Tuesday</p>
-          </div>
-          <div class="task-card">
-            <h4>BSE C3</h4>
-            <p>2pm, Every Tuesday</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="task-section">
-        <h3>Events</h3>
-        <div class="task-grid">
-          <div class="task-card">
-            <h4>Summative</h4>
-            <p>Due - 9am Tuesday</p>
-          </div>
-          <div class="task-card">
-            <h4>Foundation Workshop</h4>
-            <p>3pm, Friday</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="task-section">
-        <h3>Assignments</h3>
-        <div class="task-grid">
-          <div class="task-card">
-            <h4>E-lab Weekly Assignment</h4>
-            <p>Due - 9am Tuesday</p>
-          </div>
-          <div class="task-card">
-            <h4>Responsible Enterprise Task</h4>
-            <p>Due - 2pm Thursday</p>
-          </div>
-        </div>
-      </div>
+    <section id="classes">
+      <h3>Classes</h3>
+      <div class="task-list"></div>
     </section>
+
+    <section id="events">
+      <h3>Events</h3>
+      <div class="task-list"></div>
+    </section>
+
+    <section id="assignments">
+      <h3>Assignments</h3>
+      <div class="task-list"></div>
+    </section>
+
+    <div class="add-task">
+      <a href="add-task.html">Add New Task</a>
+    </div>
   </main>
 
-  <script>
-    document.getElementById("addTaskBtn").addEventListener("click", () => {
-      window.location.href = "add-task.html";
-    });
-  </script>
-  <script src="pretty-planner/scripts/menu.js"></script>
-  <script>
-  const savedTheme = localStorage.getItem("prettyPlannerTheme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-  }
-</script>
-<script type="module" src="pretty-planner/scripts/tasks.js"></script>
+  <script type="module" src="pretty-planner/scripts/tasks.js"></script>
 </body>
 </html>
