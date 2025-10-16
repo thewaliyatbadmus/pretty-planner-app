@@ -46,15 +46,15 @@ function renderTasks(tasks) {
       }
     `;
 
-    if (task.completed) {
-      sections.Completed.appendChild(card);
-    } else if (task.tag === 'Class') {
-      sections.Class.appendChild(card);
-    } else if (task.tag === 'Event') {
-      sections.Event.appendChild(card);
-    } else if (task.tag === 'Assignment') {
-      sections.Assignment.appendChild(card);
-    }
+   if (task.completed) {
+  sections.Completed.appendChild(card);
+} else if (task.tag === 'Class' && sections.Class) {
+  sections.Class.appendChild(card);
+} else if (task.tag === 'Event' && sections.Event) {
+  sections.Event.appendChild(card);
+} else if (task.tag === 'Assignment' && sections.Assignment) {
+  sections.Assignment.appendChild(card);
+}
   });
 }
 
