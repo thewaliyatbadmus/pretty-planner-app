@@ -1,4 +1,13 @@
 const form = document.querySelector('form');
+const messageBox = document.getElementById('message');
+
+function showMessage(text, type = 'success') {
+  messageBox.textContent = text;
+  messageBox.className = `popup show ${type}`;
+  setTimeout(() => {
+    messageBox.classList.remove('show');
+  }, 3000);
+}
 
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -9,7 +18,7 @@ form.addEventListener('submit', e => {
   const tag = document.getElementById('tag').value.trim();
 
   if (!title || !duration || !dueDate || !tag) {
-    alert('Please fill in all fields.');
+    showMessage('Please fill in all required fields.', 'error');
     return;
   }
 
@@ -19,15 +28,18 @@ form.addEventListener('submit', e => {
     duration,
     dueDate,
     tag,
+    completed: false,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
   };
-
 
   const existing = JSON.parse(localStorage.getItem('tasks') || '[]');
   existing.push(newTask);
   localStorage.setItem('tasks', JSON.stringify(existing));
 
-  alert('Task added successfully!');
-  window.location.href = 'dashboard.html';
+  showMessage('Task added successfully!', 'success');
+
+  setTimeout(() => {
+    window.location.href = 'dashboard.html';
+  }, 1200);
 });
