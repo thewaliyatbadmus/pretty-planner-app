@@ -16,6 +16,10 @@ menuBtn.addEventListener('click', () => {
   menu.classList.toggle('show');
 });
 
+document.querySelectorAll('.menu a').forEach(link => {
+  link.addEventListener('click', () => menu.classList.remove('show'));
+});
+
 
 form.addEventListener('submit', e => {
   e.preventDefault();
