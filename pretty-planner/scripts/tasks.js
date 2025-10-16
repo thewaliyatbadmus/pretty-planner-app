@@ -12,50 +12,47 @@ fetch('seed.json')
     const classes = document.querySelector('#classes .task-list');
     const events = document.querySelector('#events .task-list');
     const assignments = document.querySelector('#assignments .task-list');
-    const mainContainer = document.querySelector('.tasks-container');
 
-    const noResultMsg = document.createElement('p');
-    noResultMsg.textContent = 'No tasks match your search.';
-    noResultMsg.style.display = 'none';
-    noResultMsg.style.textAlign = 'center';
-    noResultMsg.style.marginTop = '1rem';
-    mainContainer.appendChild(noResultMsg);
+    data.forEach(task => {
+      const card = document.createElement('div');
+      card.classList.add('task-card');
+      card.innerHTML = `
+        <h4>${task.title}</h4>
+        <p>${task.dueDate}</p>
+        <p>${task.duration} minutes</p>
+        <p>#${task.tag.toLowerCase()}</p>
+      `;
 
-    function renderTasks(list, tag) {
-      list.innerHTML = '';
-      data
-        .filter(task => task.tag === tag)
-        .forEach(task => {
-          const card = document.createElement('div');
-          card.classList.add('task-card');
-          card.innerHTML = `
-            <h4>${task.title}</h4>
-            <p>${task.dueDate}</p>
-            <p>${task.duration} minutes</p>
-            <p>#${task.tag.toLowerCase()}</p>
-          `;
-          list.appendChild(card);
-        });
-    }
-
-    renderTasks(classes, 'Class');
-    renderTasks(events, 'Event');
-    renderTasks(assignments, 'Assignment');
+      if (task.tag === 'Class') classes.appendChild(card);
+      else if (task.tag === 'Event') events.appendChild(card);
+      else if (task.tag === 'Assignment') assignments.appendChild(card);
+    });
 
     searchInput.addEventListener('input', e => {
-      const searchValue = e.target.value.toLowerCase();
-      let matchCount = 0;
+  const searchValue = e.target.value.toLowerCase();
+  const cards = document.querySelectorAll('.task-card');
+  let found = false;
 
-      document.querySelectorAll('.task-card').forEach(card => {
-        if (card.textContent.toLowerCase().includes(searchValue)) {
-          card.style.display = 'block';
-          matchCount++;
-        } else {
-          card.style.display = 'none';
-        }
-      });
+  cards.forEach(card => {
+    if (card.textContent.toLowerCase().includes(searchValue)) {
+      card.style.display = 'block';
+      found = true;
+    } else {
+      card.style.display = 'none';
+    }
+  });
 
-      noResultMsg.style.display = matchCount === 0 ? 'block' : 'none';
-    });
-  })
-  .catch(err => console.error('Error loading tasks:', err));
+  let msg = document.querySelector('.no-results');
+  if (!msg) {
+    msg = document.createElement('p');
+    msg.className = 'no-results';
+    msg.textContent = 'No tasks match your search.';
+    msg.style.textAlign = 'center';
+    msg.style.marginTop = '1rem';
+    msg.style.display = 'none';
+    document.querySelector('.tasks-container').appendChild(msg);
+  }
+
+  msg.style.display = found ? 'none' : 'block';
+});
+  });
