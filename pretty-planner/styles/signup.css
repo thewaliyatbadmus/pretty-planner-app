@@ -118,3 +118,47 @@ button {
 .popup.error { background: #d10000; }
 .popup.success { background: #0f8a00; }
 
+@media (max-width: 480px) {
+  .signup-container {
+    width: 85%;
+    margin-top: 2rem;
+  }
+
+  input, button {
+    font-size: 0.9rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .menu-btn {
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .signup-container {
+    max-width: 480px;
+    margin-top: 4rem;
+  }
+
+  input, button {
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .signup-container {
+    max-width: 520px;
+    margin-top: 5rem;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+  }
+}
