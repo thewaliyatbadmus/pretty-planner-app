@@ -9,6 +9,13 @@ function showMessage(text, type = 'success') {
   }, 3000);
 }
 
+const menuBtn = document.querySelector('.menu-btn');
+const menu = document.querySelector('.menu');
+
+menuBtn.addEventListener('click', () => {
+  menu.classList.toggle('hidden');
+});
+
 form.addEventListener('submit', e => {
   e.preventDefault();
 
