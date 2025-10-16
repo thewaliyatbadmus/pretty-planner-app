@@ -10,7 +10,7 @@ async function loadTasks() {
   const seedData = await fetch('seed.json').then(res => res.json());
   const localData = JSON.parse(localStorage.getItem('tasks') || '[]');
 
-  // Merge only once and preserve completion state
+  
   const merged = [...seedData];
   localData.forEach(task => {
     const existing = merged.find(t => t.id === task.id);
@@ -61,16 +61,16 @@ function renderTasks(tasks) {
 function markAsCompleted(taskId) {
   let tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
 
-  // If the task is from seed data, pull it into localStorage
+  
   const all = tasks.length ? tasks : [];
 
-  // Find task in combined data
+  
   loadTasks().then(allTasks => {
     const taskToUpdate = allTasks.find(t => t.id === taskId);
     if (taskToUpdate) {
       taskToUpdate.completed = true;
 
-      // Remove duplicates before saving
+      
       const updated = allTasks.filter(
         (v, i, a) => a.findIndex(t => t.id === v.id) === i
       );
@@ -107,15 +107,19 @@ searchInput.addEventListener('input', e => {
   });
 
   let msg = document.querySelector('.no-results');
-  if (!msg) {
-    msg = document.createElement('p');
-    msg.className = 'no-results';
-    msg.textContent = 'No tasks match your search.';
-    msg.style.textAlign = 'center';
-    msg.style.marginTop = '1rem';
-    msg.style.display = 'none';
-    document.querySelector('.tasks-container').appendChild(msg);
-  }
+if (!msg) {
+  msg = document.createElement('p');
+  msg.className = 'no-results';
+  msg.textContent = 'No tasks match your search.';
+  msg.style.textAlign = 'center';
+  msg.style.margin = '1rem 0';
+  msg.style.display = 'none';
+
+
+  const searchContainer = document.querySelector('.search-container');
+  searchContainer.insertAdjacentElement('afterend', msg);
+}
+
 
   msg.style.display = found ? 'none' : 'block';
 });
