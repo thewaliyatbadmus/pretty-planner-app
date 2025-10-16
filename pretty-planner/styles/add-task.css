@@ -1,209 +1,62 @@
-body {
-  font-family: "Poppins", sans-serif;
-  background: white;
-  color: black;
-  margin: 0;
-}
-
-.top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid black;
-  padding: 1rem;
-  background: white;
-}
-
-.top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid black;
-  padding: 1rem;
-  position: relative;
-}
-
-.menu-btn {
-  position: absolute;
-  left: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-}
-
-.top-bar h1 {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-.menu-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.form-page {
-  max-width: 400px;
-  margin: 3rem auto;
-  padding: 1rem;
+main {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 0 1rem;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.2rem; 
 }
 
 label {
   font-weight: 500;
   margin-bottom: 0.3rem;
-  display: block;
 }
 
-input {
+input,
+select,
+textarea {
   width: 100%;
-  padding: 0.6rem;
-  border: 1px solid black;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #555;
   border-radius: 4px;
   font-size: 1rem;
 }
 
 button {
+  margin-top: 1rem;
   padding: 0.7rem;
   border: none;
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-#saveBtn {
   background: black;
   color: white;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-#resetBtn {
-  background: #ddd;
+button:hover {
+  background: #333;
 }
 
-.error {
-  color: red;
-  font-size: 0.85rem;
-  height: 1rem;
-}
+@media (max-width: 600px) {
+  main {
+    margin: 40px auto;
+    padding: 0 1rem;
+  }
 
-.side-menu {
-  position: fixed;
-  top: 0;
-  left: -230px;
-  width: 200px;
-  height: 100%;
-  background: white;
-  border-right: 1px solid black;
-  transition: left 0.3s ease;
-  z-index: 20;
-  padding-top: 4rem;
-}
+  form {
+    gap: 0.9rem;
+  }
 
-.side-menu.open {
-  left: 0;
-}
+  input,
+  select,
+  textarea {
+    font-size: 0.95rem;
+  }
 
-.side-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.side-menu li {
-  border-bottom: 1px solid black;
-}
-
-.side-menu a {
-  display: block;
-  padding: 1rem;
-  text-decoration: none;
-  color: black;
-}
-
-.side-menu a:hover {
-  text-decoration: underline;
-}
-
-body.dark-mode {
-  background: #111;
-  color: #fff;
-}
-
-body.dark-mode input,
-body.dark-mode select {
-  background: #222;
-  color: #fff;
-  border: 1px solid #fff;
-}
-
-body.dark-mode button {
-  background: #fff;
-  color: #000;
-}
-
-* {
-  box-sizing: border-box;
-  max-width: 100%;
-}
-
-html, body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-img, video, canvas {
-  max-width: 100%;
-  height: auto;
-}
-
-header, main, section, footer, div {
-  width: 100%;
-  display: block;
-}
-
-form, input, select, textarea, button {
-  width: 100%;
-  max-width: 100%;
-}
-
-.container, .dashboard, .settings-container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.top-bar, .actions, .charts, .stats, .form-row, .button-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.stat, .chart, .form-group, .task-card {
-  flex: 1 1 300px;
-  max-width: 100%;
-}
-
-button {
-  width: auto;
-  min-width: 120px;
-}
-
-input, select, textarea {
-  font-size: 1rem;
-  padding: 0.6rem;
-}
-
-h1, h2, h3, h4, p, label {
-  word-wrap: break-word;
+  button {
+    padding: 0.6rem;
+  }
 }
