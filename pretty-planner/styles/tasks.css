@@ -153,6 +153,20 @@ h3 {
   margin-top: 0.5rem;
 }
 
+#completed {
+  margin-top: 2rem;
+}
+
+#completed h3 {
+  color: #28a745;
+}
+
+.done-text {
+  color: #28a745;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
 @media (max-width: 1024px) {
   .task-card {
     flex: 1 1 calc(50% - 1rem);
