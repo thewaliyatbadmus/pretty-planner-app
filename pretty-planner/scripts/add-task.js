@@ -4,6 +4,7 @@ const menu = document.querySelector('.menu');
 menuBtn.addEventListener('click', () => {
   menu.classList.toggle('hidden');
 });
+
 const form = document.querySelector('form');
 const messageBox = document.getElementById('message');
 
