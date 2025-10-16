@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pretty Planner | Add New Task</title>
-  <link rel="stylesheet" href="pretty-planner/styles/add-task.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add New Task | Pretty Planner</title>
+  <link rel="stylesheet" href="pretty-planner/styles/add-task.css">
 </head>
 <body>
   <header class="top-bar">
@@ -12,50 +12,32 @@
     <h1>Add New Task</h1>
   </header>
 
-  <nav class="side-menu" id="sideMenu">
-    <ul>
-      <li><a href="index.html">About</a></li>
-      <li><a href="dashboard.html">Dashboard</a></li>
-      <li><a href="tasks.html">Tasks & Events</a></li>
-      <li><a href="add-task.html">Add Task</a></li>
-      <li><a href="settings.html">Settings</a></li>
-    </ul>
-  </nav>
+  <main>
+    <form>
+      <label for="title">Task Title</label>
+      <input type="text" id="title" placeholder="Enter task title">
 
-  <main class="form-page">
-    <form id="taskForm">
-      <div class="form-group">
-        <label for="title">Title / Task Name</label>
-        <input type="text" id="title" name="title" required placeholder="e.g. Frontend assignment" />
-        <small class="error" id="titleError"></small>
-      </div>
+      <label for="dueDate">Due Date</label>
+      <input type="date" id="dueDate">
 
-      <div class="form-group">
-        <label for="duration">Duration (minutes)</label>
-        <input type="number" id="duration" name="duration" required placeholder="e.g. 90" />
-        <small class="error" id="durationError"></small>
-      </div>
+      <label for="duration">Duration (minutes)</label>
+      <input type="number" id="duration" placeholder="e.g., 60">
 
-      <div class="form-group">
-        <label for="dueDate">Due Date</label>
-        <input type="date" id="dueDate" name="dueDate" required />
-        <small class="error" id="dateError"></small>
-      </div>
+      <label for="tag">Category</label>
+      <select id="tag">
+        <option value="">Select category</option>
+        <option value="Assignment">Assignment</option>
+        <option value="Event">Event</option>
+        <option value="Class">Class</option>
+      </select>
 
-      <div class="form-group">
-        <label for="tag">Tag / Category</label>
-        <input type="text" id="tag" name="tag" required placeholder="e.g. Assignment" />
-        <small class="error" id="tagError"></small>
-      </div>
-
-      <button type="submit" id="saveBtn">Save Task</button>
-      <button type="reset" id="resetBtn">Clear</button>
+      <button type="submit">Save Task</button>
     </form>
-    <div id="message" class="popup hidden"></div>
   </main>
 
-  <script src="pretty-planner/scripts/menu.js"></script>
-  <script src="pretty-planner/scripts/validators.js"></script>
+  
+  <div id="message" class="popup hidden"></div>
+
   <script type="module" src="pretty-planner/scripts/add-task.js"></script>
 </body>
 </html>

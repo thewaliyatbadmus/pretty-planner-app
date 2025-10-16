@@ -33,13 +33,15 @@ form.addEventListener('submit', e => {
     updatedAt: new Date().toISOString()
   };
 
+  
   const existing = JSON.parse(localStorage.getItem('tasks') || '[]');
   existing.push(newTask);
   localStorage.setItem('tasks', JSON.stringify(existing));
 
   showMessage('Task added successfully!', 'success');
 
+ 
   setTimeout(() => {
-    window.location.href = 'dashboard.html';
+    window.location.href = 'tasks.html';
   }, 1200);
 });
