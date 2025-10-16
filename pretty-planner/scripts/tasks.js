@@ -1,4 +1,4 @@
-import { loadData } from "./pretty-planner/scripts/storage.js";
+import { loadData } from "./storage.js";
 
 const categories = document.querySelectorAll(".categories li");
 const taskContainer = document.getElementById("taskContainer");
@@ -85,7 +85,6 @@ async function init() {
     li.addEventListener("click", () => {
       categories.forEach((c) => c.classList.remove("active"));
       li.classList.add("active");
-
       const selected = li.textContent.trim();
       const filtered = filterByCategory(selected);
       renderTasks(filtered, selected);
