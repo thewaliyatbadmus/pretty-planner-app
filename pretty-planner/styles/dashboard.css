@@ -1,6 +1,7 @@
 body {
-  font-family: 'Poppins', sans-serif;
   margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
   background: #fff;
   color: #000;
 }
@@ -9,217 +10,143 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1rem;
   border-bottom: 1px solid #000;
 }
 
-.top-bar h1 {
-  font-size: 1.5rem;
-  margin: 0;
-}
-
 .menu-btn {
+  font-size: 1.5rem;
   background: none;
   border: none;
-  font-size: 1.5rem;
   cursor: pointer;
 }
 
-.search {
-  padding: 0.4rem 0.6rem;
-  border: 1px solid #aaa;
+.menu {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #000;
+  padding: 1rem;
+}
+
+.menu.hidden {
+  display: none;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin-bottom: 0.5rem;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #000;
+}
+
+.search-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.search-container input {
+  width: 220px;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  width: 180px;
 }
 
 .dashboard {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
   text-align: center;
-  padding: 2rem 1rem;
 }
 
 .welcome h2 {
-  font-size: 2rem;
-  margin-bottom: 0.3rem;
-}
-
-.welcome p {
-  font-style: italic;
-  color: #444;
-  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
 }
 
 .stats {
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
 .stat {
   background: #000;
   color: #fff;
-  padding: 1rem 2rem;
-  border-radius: 10px;
-  width: 160px;
-  text-align: center;
+  padding: 1.5rem;
+  border-radius: 12px;
+  flex: 1 1 calc(30% - 1rem);
+  min-width: 220px;
 }
 
 .stat h3 {
-  margin: 0 0 0.5rem;
-  font-weight: 500;
+  margin-bottom: 0.5rem;
 }
 
 .stat p {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
 }
 
 .actions {
-  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
-.actions button {
+.add-btn {
   background: #000;
   color: #fff;
-  border: none;
-  padding: 0.7rem 1.5rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
   font-weight: 600;
-  cursor: pointer;
 }
 
-.actions button:hover {
+.add-btn:hover {
   background: #333;
 }
 
-.charts {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 3rem;
-  padding: 2rem;
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .stat {
+    flex: 1 1 calc(45% - 1rem);
+  }
 }
 
-.chart {
-  width: 350px;
-  text-align: center;
+@media (max-width: 768px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat {
+    flex: 1 1 100%;
+  }
+
+  .search-container {
+    justify-content: center;
+  }
 }
 
-.chart h3 {
-  margin-bottom: 1rem;
-}
+@media (max-width: 360px) {
+  .welcome h2 {
+    font-size: 1.3rem;
+  }
 
-/* side-menu (from menu.js toggle) */
-.side-menu {
-  position: fixed;
-  top: 0;
-  right: -260px;
-  width: 240px;
-  height: 100vh;
-  background: #fff;
-  border-left: 1px solid #000;
-  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
-  transition: right 0.3s ease;
-  padding-top: 60px;
-}
-
-.side-menu.open {
-  right: 0;
-}
-
-.side-menu ul {
-  list-style: none;
-  padding: 0;
-}
-
-.side-menu li {
-  padding: 1rem;
-  border-bottom: 1px solid #ccc;
-}
-
-.side-menu a {
-  text-decoration: none;
-  color: #000;
-  font-weight: 500;
-}
-
-.side-menu a:hover {
-  text-decoration: underline;
-}
-
-body.dark-mode {
-  background: #111;
-  color: #fff;
-}
-
-body.dark-mode input,
-body.dark-mode select {
-  background: #222;
-  color: #fff;
-  border: 1px solid #fff;
-}
-
-body.dark-mode button {
-  background: #fff;
-  color: #000;
-}
-
-* {
-  box-sizing: border-box;
-  max-width: 100%;
-}
-
-html, body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-img, video, canvas {
-  max-width: 100%;
-  height: auto;
-}
-
-header, main, section, footer, div {
-  width: 100%;
-  display: block;
-}
-
-form, input, select, textarea, button {
-  width: 100%;
-  max-width: 100%;
-}
-
-.container, .dashboard, .settings-container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.top-bar, .actions, .charts, .stats, .form-row, .button-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.stat, .chart, .form-group, .task-card {
-  flex: 1 1 300px;
-  max-width: 100%;
-}
-
-button {
-  width: auto;
-  min-width: 120px;
-}
-
-input, select, textarea {
-  font-size: 1rem;
-  padding: 0.6rem;
-}
-
-h1, h2, h3, h4, p, label {
-  word-wrap: break-word;
+  .stat p {
+    font-size: 1.5rem;
+  }
 }

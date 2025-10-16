@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pretty Planner | Dashboard</title>
   <link rel="stylesheet" href="pretty-planner/styles/dashboard.css" />
 </head>
@@ -10,18 +10,23 @@
   <header class="top-bar">
     <button class="menu-btn" aria-label="Open navigation">⋯</button>
     <h1>Dashboard</h1>
-    <input type="search" id="dashboardSearch" placeholder="Search tasks..." aria-label="Search" class="search" />
   </header>
 
-  <nav class="side-menu" id="sideMenu">
-    <ul>
-      <li><a href="index.html">About</a></li>
-      <li><a href="dashboard.html">Dashboard</a></li>
-      <li><a href="tasks.html">Tasks & Events</a></li>
-      <li><a href="add-task.html">Add New Task</a></li>
-      <li><a href="settings.html">Settings</a></li>
-    </ul>
-  </nav>
+  <div class="menu hidden">
+    <nav>
+      <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="tasks.html">Tasks & Events</a></li>
+        <li><a href="add-task.html">Add Task</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="search-container">
+    <input type="search" id="dashboardSearch" placeholder="Search" aria-label="Search" />
+  </div>
 
   <main class="dashboard">
     <section class="welcome">
@@ -39,36 +44,16 @@
         <p id="hoursLogged">0</p>
       </div>
       <div class="stat black">
-        <h3>Top Tag</h3>
-        <p id="attendedCount">–</p>
+        <h3>Top Tags</h3>
+        <p id="topTagCount">0</p>
       </div>
     </section>
 
     <div class="actions">
-      <button id="updateBtn">Update Current Task</button>
+      <a href="add-task.html" class="add-btn">Add New Task</a>
     </div>
-
-    <section class="charts">
-      <div class="chart">
-        <h3>Trending Events</h3>
-        <canvas id="eventsChart" width="350" height="200"></canvas>
-      </div>
-
-      <div class="chart">
-        <h3>Trending Tags</h3>
-        <canvas id="tagsChart" width="350" height="200"></canvas>
-      </div>
-    </section>
   </main>
 
-  <script type="module" src="pretty-planner/scripts/stats.js"></script>
-  <script src="pretty-planner/scripts/menu.js"></script>
-  <script>
-  const savedTheme = localStorage.getItem("prettyPlannerTheme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-  }
-</script>
-<script type="module" src="pretty-planner/scripts/dashboard.js"></script>
+  <script type="module" src="pretty-planner/scripts/dashboard.js"></script>
 </body>
 </html>
