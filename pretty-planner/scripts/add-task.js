@@ -1,3 +1,9 @@
+const menuBtn = document.querySelector('.menu-btn');
+const menu = document.querySelector('.menu');
+
+menuBtn.addEventListener('click', () => {
+  menu.classList.toggle('hidden');
+});
 const form = document.querySelector('form');
 const messageBox = document.getElementById('message');
 
@@ -9,12 +15,7 @@ function showMessage(text, type = 'success') {
   }, 3000);
 }
 
-const menuBtn = document.querySelector('.menu-btn');
-const menu = document.querySelector('.menu');
 
-menuBtn.addEventListener('click', () => {
-  menu.classList.toggle('show');
-});
 
 document.querySelectorAll('.menu a').forEach(link => {
   link.addEventListener('click', () => menu.classList.remove('show'));
