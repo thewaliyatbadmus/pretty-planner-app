@@ -9,10 +9,13 @@ menuBtn.addEventListener('click', () => {
 async function loadTasks() {
   const seedData = await fetch('seed.json').then(res => res.json());
   const localData = JSON.parse(localStorage.getItem('tasks') || '[]');
-  const merged = [...seedData];
 
+  // Merge only once and preserve completion state
+  const merged = [...seedData];
   localData.forEach(task => {
-    if (!merged.find(t => t.id === task.id)) merged.push(task);
+    const existing = merged.find(t => t.id === task.id);
+    if (existing) Object.assign(existing, task);
+    else merged.push(task);
   });
 
   return merged;
@@ -55,25 +58,40 @@ function renderTasks(tasks) {
   });
 }
 
-function updateLocalStorage(id) {
-  const allTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
-  const updated = allTasks.map(task => {
-    if (task.id === id) task.completed = true;
-    return task;
+function markAsCompleted(taskId) {
+  let tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+
+  // If the task is from seed data, pull it into localStorage
+  const all = tasks.length ? tasks : [];
+
+  // Find task in combined data
+  loadTasks().then(allTasks => {
+    const taskToUpdate = allTasks.find(t => t.id === taskId);
+    if (taskToUpdate) {
+      taskToUpdate.completed = true;
+
+      // Remove duplicates before saving
+      const updated = allTasks.filter(
+        (v, i, a) => a.findIndex(t => t.id === v.id) === i
+      );
+
+      localStorage.setItem('tasks', JSON.stringify(updated));
+      renderTasks(updated);
+    }
   });
-  localStorage.setItem('tasks', JSON.stringify(updated));
 }
 
+// Handle completion button clicks
 document.addEventListener('click', e => {
   if (e.target.classList.contains('complete-btn')) {
-    const taskId = e.target.dataset.id;
-    updateLocalStorage(taskId);
-    loadTasks().then(renderTasks);
+    const id = e.target.dataset.id;
+    markAsCompleted(id);
   }
 });
 
 loadTasks().then(renderTasks);
 
+// Search function
 searchInput.addEventListener('input', e => {
   const searchValue = e.target.value.toLowerCase();
   const cards = document.querySelectorAll('.task-card');
