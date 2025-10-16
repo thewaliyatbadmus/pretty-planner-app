@@ -56,3 +56,15 @@ fetch('seed.json')
   msg.style.display = found ? 'none' : 'block';
 });
   });
+
+  async function loadTasks() {
+  const seedData = await fetch('seed.json').then(res => res.json());
+  const localData = JSON.parse(localStorage.getItem('tasks') || '[]');
+  const merged = [...seedData];
+
+  localData.forEach(task => {
+    if (!merged.find(t => t.id === task.id)) merged.push(task);
+  });
+
+  return merged;
+}

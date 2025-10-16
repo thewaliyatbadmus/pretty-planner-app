@@ -8,6 +8,11 @@ form.addEventListener('submit', e => {
   const dueDate = document.getElementById('dueDate').value;
   const tag = document.getElementById('tag').value.trim();
 
+  if (!title || !duration || !dueDate || !tag) {
+    alert('Please fill in all fields.');
+    return;
+  }
+
   const newTask = {
     id: 'rec_' + Date.now(),
     title,
@@ -18,11 +23,11 @@ form.addEventListener('submit', e => {
     updatedAt: new Date().toISOString()
   };
 
-  let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  tasks.push(newTask);
-  localStorage.setItem('tasks', JSON.stringify(tasks));
+
+  const existing = JSON.parse(localStorage.getItem('tasks') || '[]');
+  existing.push(newTask);
+  localStorage.setItem('tasks', JSON.stringify(existing));
 
   alert('Task added successfully!');
   window.location.href = 'dashboard.html';
 });
-
