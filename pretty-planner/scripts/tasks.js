@@ -17,11 +17,13 @@ fetch('seed.json')
       const card = document.createElement('div');
       card.classList.add('task-card');
       card.innerHTML = `
-        <h4>${task.title}</h4>
-        <p>${task.dueDate}</p>
-        <p>${task.duration} minutes</p>
-        <p>#${task.tag.toLowerCase()}</p>
-      `;
+  <h4>${task.title}</h4>
+  <p>${task.dueDate}</p>
+  <p>${task.duration} minutes</p>
+  <p>#${task.tag.toLowerCase()}</p>
+  ${task.completed ? '<p class="done-text">✔ Completed</p>' : `<button class="complete-btn" data-id="${task.id}">Mark as Completed</button>`}
+`;
+
 
       if (task.tag === 'Class') classes.appendChild(card);
       else if (task.tag === 'Event') events.appendChild(card);
@@ -68,3 +70,17 @@ fetch('seed.json')
 
   return merged;
 }
+
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('complete-btn')) {
+    const taskId = e.target.dataset.id;
+    const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+    const updated = tasks.map(t => {
+      if (t.id === taskId) t.completed = true;
+      return t;
+    });
+
+    localStorage.setItem('tasks', JSON.stringify(updated));
+    e.target.closest('.task-card').remove();
+  }
+});

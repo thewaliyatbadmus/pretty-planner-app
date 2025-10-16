@@ -50,7 +50,11 @@ function findTopTag(tasks) {
 loadTasks().then(tasks => {
   calculateStats(tasks);
 
-  // Enable search function for dashboard
+  const completedTasks = tasks.filter(t => t.completed).length;
+const activeTasks = tasks.filter(t => !t.completed).length;
+
+document.getElementById('completedCount').textContent = completedTasks;
+
   searchInput.addEventListener('input', e => {
     const searchValue = e.target.value.toLowerCase();
     const found = tasks.some(t =>

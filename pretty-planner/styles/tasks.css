@@ -119,6 +119,40 @@ h3 {
   background: #333;
 }
 
+.complete-btn {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  margin-top: 0.8rem;
+  width: 100%;
+}
+
+.complete-btn:hover {
+  background-color: #333;
+}
+
+.complete-btn:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 768px) {
+  .complete-btn {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+.done-text {
+  color: #28a745;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
 @media (max-width: 1024px) {
   .task-card {
     flex: 1 1 calc(50% - 1rem);
